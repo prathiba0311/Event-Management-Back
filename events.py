@@ -45,6 +45,6 @@ class EVENTS:
     def insert(self,data,eid):
         self.db_connect()
         
-        self.cur.execute("INSERT into event(e_id,e_date,e_time,e_type,e_venue) VALUES('{0}' , '{1}' , '{2}' , '{3}' , '{4}')".format(data['e_id'],data['e_data'],data['e_time'],data['e_type'],data['e_venue'],data['cat']))
+        self.cur.execute("INSERT into event(e_id,e_date,e_time,e_type,e_venue) VALUES('{0}' , '{1}' , '{2}' , '{3}' , '{4}')".format(data['e_id'],data['e_date'],data['e_time'],data['e_type'],data['e_venue']))
         self.conn.commit()    
     
