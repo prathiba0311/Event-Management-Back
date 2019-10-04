@@ -53,7 +53,7 @@ def add_event():
     if E.check_date(payload['date']) == True:
         return jsonify({'success':False})
     E.insert(payload,eid)
-    E_U.insert(eid,uid)
+    E_U.insert(eid,payload['uid'])
     rid = P.size()+1
     P.insert(rid,1000)
     R_E.insert(rid,eid)
