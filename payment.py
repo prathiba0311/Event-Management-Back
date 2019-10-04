@@ -29,7 +29,7 @@ class PAYMENT:
         
         today = date.today()
         d1 = today.strftime("%Y/%m/%d")
-        self.cur.execute("insert into pay_table(rid,amount,payment_date) values({0},{1},'{2}')".format(rid,amt,d1)
+        self.cur.execute("insert into pay_table(rid,amount,payment_date) values({0},{1},'{2}')".format(rid,amt,d1))
         self.conn.commit()
         
         
