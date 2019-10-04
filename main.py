@@ -50,7 +50,7 @@ def delete_event():
 def add_event():
     payload = request.json
     eid = E.size()+1
-    if E.check_date(payload['date']) == True:
+    if E.check_date(payload['e_date']) == True:
         return jsonify({'success':False})
     E.insert(payload,eid)
     E_U.insert(eid,payload['uid'])
