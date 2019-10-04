@@ -11,11 +11,12 @@ class EVENTS:
         self.conn = MySQLdb.connect(user=self.user, password=self.pswd,host=self.host,database=self.db)
         self.cur = self.conn.cursor()
     
-    def getevents(self,eid):
+    def getevents(self,e):
         self.db_connect()
-        
-        self.cur.execute("select * from event where e_id = {0} ".format(eid));
-        events=self.cur.fetchall()
+        events = []
+        for eid in e:
+            self.cur.execute("select * from event where e_id = {0} ".format(eid));
+            events.append(self.cur.fetchall()[0])
         event_objects=[]
         for e_id,e_date,e_time,e_type,e_venue in events:
             event_objects.append({'e_id':e_id, 'e_date':e_date, 'e_time':e_time, 'e_type':e_type,'e_venue':e_venue})
