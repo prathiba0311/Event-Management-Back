@@ -21,14 +21,14 @@ class PAYMENT:
     def size(self):
         self.db_connect()
         
-        entries=self.cur.execute("select * from pay_table");
+        entries=self.cur.execute("select * from pay_table")
         return entries
 
     def insert(self,rid, amt):
         self.db_connect()
         
         today = date.today()
-        d1 = today.strftime("%Y/%m/%d");
+        d1 = today.strftime("%Y/%m/%d")
         self.cur.execute("insert into pay_table(rid,amount,payment_date) values({0},{1},'{2}')".format(rid,amt,d1)
         self.conn.commit()
         
