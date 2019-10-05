@@ -28,14 +28,15 @@ def login():
     print(payload)
 
     if U.search(payload['id'])==True and U.pwd(payload['id'])==payload['passwd'] :
-	Uid=payload['id']
-	print(Uid)
-	return jsonify({'success':True})
+    Uid=payload['id']
+    print(Uid)
+    return jsonify({'success':True})
     else:
         return jsonify({'success':False})
         
 @app.route("/userhome",methods=["GET"])
 def userhome():
+    print(Uid)
     e = E_U.getevents(Uid)
     all_events = E.getevents(e)
     return jsonify({'events':allevents, 'success':True,'uid':Uid})
