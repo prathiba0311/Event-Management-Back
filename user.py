@@ -28,6 +28,6 @@ class USER:
         return pwd[0][0]
     def insert(self,data):
         self.db_connect()
-    
-        self.cur.execute("INSERT into users(uid,pwd,fname,sname,num,eid) VALUES('{0}' , '{1}' , '{2}' , '{3}' , '{4}',{5})".format(data['uid'],data['passwd'],data['fname'],data['sname'],data['num'],data['eid']))
+    	print(data['fname'])
+        self.cur.execute("INSERT into users(uid,pwd,fname,sname,num,eid) VALUES('{0}' , '{1}' , '{2}' , '{3}' , '{4}','{5}')".format(data['uid'],data['passwd'],data['fname'],data['sname'],data['num'],data['eid']))
         self.conn.commit()

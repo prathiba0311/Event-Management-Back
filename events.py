@@ -18,6 +18,8 @@ class EVENTS:
             self.cur.execute("select * from event where e_id = {0} ".format(eid));
             events.append(self.cur.fetchall()[0])
         event_objects=[]
+	if len(events)==0:
+		return event_objects
         for e_id,e_date,e_time,e_type,e_venue in events:
             event_objects.append({'e_id':e_id, 'e_date':e_date, 'e_time':e_time, 'e_type':e_type,'e_venue':e_venue})
         return event_objects

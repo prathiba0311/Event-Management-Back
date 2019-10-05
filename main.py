@@ -12,6 +12,7 @@ E = EVENTS()
 P = PAYMENT()
 R_E = RECIEPT_EVENT()
 E_U = EVENT_USER()
+Uid = None
 @app.route("/register", methods=["POST"])                       
 def register():
     payload = request.json
@@ -25,16 +26,19 @@ def register():
 def login():
     payload = request.json
     print(payload)
+
     if U.search(payload['id'])==True and U.pwd(payload['id'])==payload['passwd'] :
-        return jsonify({'success':True})
+	Uid=payload['id']
+	print(Uid)
+	return jsonify({'success':True})
     else:
         return jsonify({'success':False})
         
-@app.route("/userhome/<uid>",methods=["GET"])
+@app.route("/userhome",methods=["GET"])
 def userhome():
-    e = E_U.getevents(uid)
+    e = E_U.getevents(Uid)
     all_events = E.getevents(e)
-    return jsonify({'events':allevents, 'success':True})
+    return jsonify({'events':allevents, 'success':True,'uid':Uid})
     
 @app.route("/delete-event",methods=["POST"])
 def delete_event():
