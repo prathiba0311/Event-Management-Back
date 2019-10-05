@@ -24,22 +24,22 @@ def register():
 
 @app.route("/login",methods=["POST"])
 def login():
-    payload = request.json
-    print(payload)
+	payload = request.json
+	print(payload)
 
-    if U.search(payload['id'])==True and U.pwd(payload['id'])==payload['passwd'] :
-    Uid=payload['id']
-    print(Uid)
-    return jsonify({'success':True})
-    else:
-        return jsonify({'success':False})
+	if U.search(payload['id'])==True and U.pwd(payload['id'])==payload['passwd'] :
+		Uid=payload['id']
+		print(Uid)
+		return jsonify({'success':True})
+	else:
+		return jsonify({'success':False})
         
 @app.route("/userhome",methods=["GET"])
 def userhome():
-    print(Uid)
-    e = E_U.getevents(Uid)
-    all_events = E.getevents(e)
-    return jsonify({'events':allevents, 'success':True,'uid':Uid})
+	print(Uid)
+	e = E_U.getevents(Uid)	
+	all_events = E.getevents(e)
+	return jsonify({'events':allevents, 'success':True,'uid':Uid})
     
 @app.route("/delete-event",methods=["POST"])
 def delete_event():
